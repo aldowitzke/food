@@ -1,12 +1,21 @@
 import React from "react";
 import { View, TextInput, StyleSheet } from "react-native";
 import { Feather } from "@expo/vector-icons";
+import yelp from "../api/yelp";
 
-const SearchBar = () => {
+const SearchBar = ({ term, onTermChange, onTermSubmitted }) => {
   return (
     <View style={styles.backgroundStyle}>
       <Feather name="search" style={styles.iconStyle} />
-      <TextInput placeholder="Search" style={styles.inputStyle} />
+      <TextInput
+        autoCapitalize="none"
+        autoCorrect={false}
+        placeholder="Search"
+        style={styles.inputStyle}
+        value={term}
+        onChangeText={onTermChange}
+        onEndEditing={onTermSubmitted}
+      />
     </View>
   );
 };
